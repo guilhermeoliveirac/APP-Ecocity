@@ -10,6 +10,7 @@ import 'package:ecocity/src/view/page_recycling.dart';
 import 'package:ecocity/src/view/page_schedule_collection.dart';
 import 'package:ecocity/src/view/page_splashscreen.dart';
 import 'package:ecocity/src/view/page_teste_map.dart';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
