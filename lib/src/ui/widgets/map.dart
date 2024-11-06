@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
-import 'package:app_ecocity/src/model/model_util.dart';
-import 'package:app_ecocity/src/ui/theme/custom_colors.dart';
+import 'package:ecocity/src/model/model_util.dart';
+import 'package:ecocity/src/ui/theme/custom_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_osm_plugin/flutter_osm_plugin.dart';
 import 'package:url_launcher/url_launcher.dart';

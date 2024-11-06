@@ -1,6 +1,6 @@
-import 'package:app_ecocity/src/ui/theme/custom_colors.dart';
+import 'package:ecocity/src/ui/theme/custom_colors.dart';
 import 'package:flutter/material.dart';
-import 'package:app_ecocity/main.dart'; // Importar onde as rotas estão definidas
+import 'package:ecocity/main.dart'; // Importar onde as rotas estão definidas
 
 class CustomNavigationBar extends StatelessWidget {
   final int currentIndex;

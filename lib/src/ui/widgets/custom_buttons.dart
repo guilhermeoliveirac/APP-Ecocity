@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_const_constructors, unused_import
 
-import 'package:app_ecocity/src/ui/theme/custom_colors.dart';
-import 'package:app_ecocity/src/ui/theme/custom_font_style.dart';
+import 'package:ecocity/src/ui/theme/custom_colors.dart';
+import 'package:ecocity/src/ui/theme/custom_font_style.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
