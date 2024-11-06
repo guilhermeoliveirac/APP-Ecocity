@@ -3,7 +3,7 @@
 import 'package:ecocity/main.dart';
 import 'package:ecocity/src/ui/theme/custom_colors.dart';
 import 'package:ecocity/src/ui/widgets/custom_buttons.dart';
-//import 'package:ecocity/src/view/page_accounts.dart';
+import 'package:ecocity/src/view/page_accounts.dart';
 import 'package:flutter/material.dart';
 
 class CustomSplashscreen extends StatefulWidget {
