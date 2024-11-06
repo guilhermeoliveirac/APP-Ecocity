@@ -2,14 +2,15 @@
 
 import 'package:ecocity/src/ui/theme/custom_colors.dart'; 
 import 'package:ecocity/src/view/page_accounts.dart';
-import 'package:ecocity/src/view/page_correct_disposal.dart';
+//import 'package:ecocity/src/view/page_correct_disposal.dart';
 import 'package:ecocity/src/view/page_create_account.dart';
-import 'package:ecocity/src/view/page_home.dart';
+//import 'package:ecocity/src/view/page_home.dart';
 import 'package:ecocity/src/view/page_login.dart';
 import 'package:ecocity/src/view/page_recycling.dart';
-import 'package:ecocity/src/view/page_schedule_collection.dart';
+//import 'package:ecocity/src/view/page_schedule_collection.dart';
 import 'package:ecocity/src/view/page_splashscreen.dart';
-import 'package:ecocity/src/view/page_teste_map.dart';
+//import 'package:ecocity/src/view/page_teste_map.dart';
+import 'package:ecocity/src/view/page_calendar.dart';
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -33,14 +34,15 @@ class MyApp extends StatelessWidget {
       ),
       routes: {
         Routes.splash: (context) => CustomAccounts(),
-        Routes.map: (context) => TestMap(),
+        //Routes.map: (context) => TestMap(),
         Routes.login: (context) => CustomLogin(),
         Routes.logout: (context) => CustomLogin(),
         Routes.register: (context) => CustomRegister(),
-        Routes.home: (context) => HomeScreen(),
-        Routes.correctdisposal: (context) => CustomCorrectDisposal()
+        //Routes.home: (context) => HomeScreen(),
+        //Routes.correctdisposal: (context) => CustomCorrectDisposal()
       },
-      home: const CustomSplashscreen(),
+      home: const ScheduleCollectionScreen(),
+      //home: const CustomSplashscreen(),
     );
   }
 }
