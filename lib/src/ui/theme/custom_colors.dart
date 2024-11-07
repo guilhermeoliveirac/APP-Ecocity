@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 
 class CustomColors {
-  static const Color primaryColor = Color.fromARGB(255, 107, 175, 19);
+  static const Color primaryColor = Color.fromRGBO(73, 131, 0, 1);
   static const Color secondaryColor = Color.fromRGBO(52, 92, 0, 1);
   static const Color borderColor = Color(0xFF747474);
   static const Color highlightTextolor = Color(0xFF505050);

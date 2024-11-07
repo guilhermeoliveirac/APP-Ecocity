@@ -1,12 +1,17 @@
 // ignore_for_file: prefer_const_constructors
 
-import 'package:ecocity/src/ui/theme/custom_colors.dart'; 
+import 'package:ecocity/src/ui/theme/custom_colors.dart';
 import 'package:ecocity/src/view/page_accounts.dart';
+import 'package:ecocity/src/view/page_certificates.dart';
+import 'package:ecocity/src/view/page_correct_disposal.dart';
 //import 'package:ecocity/src/view/page_correct_disposal.dart';
 import 'package:ecocity/src/view/page_create_account.dart';
+import 'package:ecocity/src/view/page_home.dart';
+import 'package:ecocity/src/view/page_incentiva_program_ecocity.dart';
 //import 'package:ecocity/src/view/page_home.dart';
 import 'package:ecocity/src/view/page_login.dart';
 import 'package:ecocity/src/view/page_recycling.dart';
+import 'package:ecocity/src/view/page_seletive_collection.dart';
 //import 'package:ecocity/src/view/page_schedule_collection.dart';
 import 'package:ecocity/src/view/page_splashscreen.dart';
 //import 'package:ecocity/src/view/page_teste_map.dart';
@@ -34,15 +39,18 @@ class MyApp extends StatelessWidget {
       ),
       routes: {
         Routes.splash: (context) => CustomAccounts(),
-        //Routes.map: (context) => TestMap(),
+        Routes.map: (context) => TestMap(),
         Routes.login: (context) => CustomLogin(),
         Routes.logout: (context) => CustomLogin(),
         Routes.register: (context) => CustomRegister(),
-        //Routes.home: (context) => HomeScreen(),
-        //Routes.correctdisposal: (context) => CustomCorrectDisposal()
+        Routes.home: (context) => HomeScreen(),
+        Routes.program: (context) => CustomProgramaEcocity(),
+        Routes.certificates: (context) => CustomCertificates(),
+        Routes.schedulecollection: (context) => ScheduleCollectionScreen(),
+        Routes.recicle: (context) => CustomRecycling(),
+        Routes.correctdisposal: (context) => CustomCorrectDisposal(),
       },
-      home: const ScheduleCollectionScreen(),
-      //home: const CustomSplashscreen(),
+      home: const CustomSplashscreen(),
     );
   }
 }
@@ -57,4 +65,7 @@ class Routes {
   static String register = "cadastro/";
   static String schedulecollection = "agendar/";
   static String correctdisposal = "descarte/";
+  static String program = "programa/";
+  static String certificates = "certificados/";
+  static String recicle = "reciclagem/";
 }
