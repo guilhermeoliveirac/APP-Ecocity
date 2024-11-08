@@ -14,12 +14,47 @@ class TestMap extends StatefulWidget {
 
 class _TestMap extends State<TestMap> {
   int _selectedIndex = 0;
+  TextEditingController cepController = TextEditingController();
+  final OsmImplemetation osmWidget =
+      OsmImplemetation(); // Adicione uma instância do mapa
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(),
-      body: Center(
-        child: OsmImplemetation(),
+      body: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              children: [
+                Expanded(
+                  child: TextField(
+                    controller: cepController,
+                    decoration: InputDecoration(
+                      hintText: 'Digite o CEP',
+                      border: OutlineInputBorder(),
+                    ),
+                    keyboardType: TextInputType.number,
+                  ),
+                ),
+                SizedBox(width: 8),
+                ElevatedButton(
+                  onPressed: () {
+                    osmWidget.findNearestLocation(cepController
+                        .text); // Chame findNearestLocation diretamente
+                  },
+                  child: Text('Buscar'),
+                ),
+              ],
+            ),
+          ),
+          Expanded(
+            child: Center(
+              child: osmWidget,
+            ),
+          ),
+        ],
       ),
       bottomNavigationBar: CustomNavigationBar(
         currentIndex: _selectedIndex,

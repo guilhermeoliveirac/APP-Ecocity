@@ -1,3 +1,5 @@
+// No OsmImplemetation (no arquivo do seu mapa)
+
 // ignore_for_file: prefer_const_constructors
 
 import 'package:ecocity/src/model/model_util.dart';
@@ -6,16 +8,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_osm_plugin/flutter_osm_plugin.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-
-
 class OsmImplemetation extends StatefulWidget {
-  const OsmImplemetation({
-    super.key,
-  });
+  const OsmImplemetation({super.key});
+
+  void findNearestLocation(String cep) {
+    _osmState?.findNearestLocation(cep);
+  }
 
   @override
   State<OsmImplemetation> createState() => _OSMState();
 }
+
+_OSMState? _osmState;
 
 class _OSMState extends State<OsmImplemetation> {
   late final MapController mapController;
@@ -26,6 +30,7 @@ class _OSMState extends State<OsmImplemetation> {
   @override
   void initState() {
     super.initState();
+    _osmState = this;
     mapController = MapController(
       initPosition: GeoPoint(
         latitude: -10.1689,
@@ -37,8 +42,17 @@ class _OSMState extends State<OsmImplemetation> {
 
   @override
   void dispose() {
+    _osmState = null;
     mapController.dispose();
     super.dispose();
+  }
+
+  void findNearestLocation(String cep) {
+    print("Buscando localização mais próxima para o CEP: $cep");
+
+    GeoPoint nearestLocation =
+        GeoPoint(latitude: -10.1800044, longitude: -48.3398663);
+    mapController.goToLocation(nearestLocation);
   }
 
   @override
@@ -278,7 +292,6 @@ class _OSMState extends State<OsmImplemetation> {
             size: 30,
           ),
         ));
-        
   }
 
   Future<void> limitAreaMap() async {
