@@ -15,8 +15,7 @@ class TestMap extends StatefulWidget {
 class _TestMap extends State<TestMap> {
   int _selectedIndex = 0;
   TextEditingController cepController = TextEditingController();
-  final OsmImplemetation osmWidget =
-      OsmImplemetation(); // Adicione uma instância do mapa
+  final OsmImplemetation osmWidget = OsmImplemetation();
 
   @override
   Widget build(BuildContext context) {
@@ -41,8 +40,7 @@ class _TestMap extends State<TestMap> {
                 SizedBox(width: 8),
                 ElevatedButton(
                   onPressed: () {
-                    osmWidget.findNearestLocation(cepController
-                        .text); // Chame findNearestLocation diretamente
+                    osmWidget.findNearestLocation(cepController.text);
                   },
                   child: Text('Buscar'),
                 ),
