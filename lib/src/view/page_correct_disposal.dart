@@ -15,6 +15,7 @@ class CustomCorrectDisposal extends StatefulWidget {
 
 class _CustomCorrectDisposalState extends State<CustomCorrectDisposal> {
   int _selectedIndex = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,29 +28,34 @@ class _CustomCorrectDisposalState extends State<CustomCorrectDisposal> {
           });
         },
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Column(
-          children: [
-            Text(
-              'Saiba como descartar corretamente',
-              style: GoogleFonts.poppins(
-                color: CustomColors.highlightTextolor,
-                fontSize: 16,
-                fontWeight: FontWeight.w400,
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(20),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Saiba como descartar corretamente',
+                style: GoogleFonts.poppins(
+                  color: CustomColors.highlightTextolor,
+                  fontSize: 16,
+                  fontWeight: FontWeight.w400,
+                ),
               ),
-            ),
-            Container(
-              decoration: BoxDecoration(color: CustomColors.cards_information),
-              padding: EdgeInsets.all(16.0),
-              child: SingleChildScrollView(
+              SizedBox(height: 10),
+              Container(
+                decoration: BoxDecoration(
+                  color: CustomColors.cards_information,
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                padding: EdgeInsets.all(16.0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
                       'Por que o descarte correto é importante?',
                       style: TextStyle(
-                        fontSize: 16,
+                        fontSize: 15,
                         fontWeight: FontWeight.bold,
                         color: CustomColors.highlightTextolor,
                       ),
@@ -59,46 +65,103 @@ class _CustomCorrectDisposalState extends State<CustomCorrectDisposal> {
                       'O descarte inadequado de resíduos pode resultar em danos significativos ao meio ambiente, incluindo a contaminação do solo, da água e do ar.\n'
                       'Materiais como plásticos, produtos químicos e eletrônicos podem persistir no ambiente por anos, causando danos irreparáveis à vida selvagem e à saúde humana.',
                       style: TextStyle(
-                        fontSize: 12,
+                        fontSize: 14,
                         color: CustomColors.highlightTextolor,
                       ),
                     ),
                   ],
                 ),
               ),
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            Container(
-              decoration: BoxDecoration(color: CustomColors.cards_information),
-              padding: EdgeInsets.all(16.0),
-              child: SingleChildScrollView(
+              SizedBox(height: 20),
+              Container(
+                decoration: BoxDecoration(
+                  color: CustomColors.cards_information,
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                padding: EdgeInsets.all(16.0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Por que o descarte correto é importante?',
+                      'Tipos de resíduos e como descartá-los:',
                       style: TextStyle(
-                        fontSize: 16,
+                        fontSize: 15,
                         fontWeight: FontWeight.bold,
                         color: CustomColors.highlightTextolor,
                       ),
                     ),
                     SizedBox(height: 16.0),
                     Text(
-                      'O descarte inadequado de resíduos pode resultar em danos significativos ao meio ambiente, incluindo a contaminação do solo, da água e do ar.\n'
-                      'Materiais como plásticos, produtos químicos e eletrônicos podem persistir no ambiente por anos, causando danos irreparáveis à vida selvagem e à saúde humana.',
+                      "Resíduos Orgânicos:",
+                      style: TextStyle(color: CustomColors.primaryColor),
+                    ),
+                    Text(
+                      "Restos de alimentos, folhas, e outros materiais orgânicos podem ser compostados em casa ou depositados em composteiras comunitárias. Isso reduz a quantidade de lixo enviado para aterros sanitários e produz adubo natural.\n",
                       style: TextStyle(
-                        fontSize: 12,
+                        fontSize: 14,
+                        color: CustomColors.highlightTextolor,
+                      ),
+                    ),
+                    Text(
+                      "Plásticos:",
+                      style: TextStyle(color: CustomColors.primaryColor),
+                    ),
+                    Text(
+                      "Recipientes de plástico devem ser limpos e separados de outros materiais recicláveis. Identificar os códigos de reciclagem facilita a separação correta dos tipos de plástico.\n",
+                      style: TextStyle(
+                        fontSize: 14,
+                        color: CustomColors.highlightTextolor,
+                      ),
+                    ),
+                    Text(
+                      "Papéis e Papelão:",
+                      style: TextStyle(color: CustomColors.primaryColor),
+                    ),
+                    Text(
+                      "Devem ser separados de outros materiais e colocados em recipientes designados para reciclagem. Evite misturar papéis contaminados com alimentos ou líquidos.\n",
+                      style: TextStyle(
+                        fontSize: 14,
+                        color: CustomColors.highlightTextolor,
+                      ),
+                    ),
+                    Text(
+                      "Vidro:",
+                      style: TextStyle(color: CustomColors.primaryColor),
+                    ),
+                    Text(
+                      "Recipientes de vidro devem ser enxaguados e depositados em recipientes de reciclagem de vidro. Evite misturar vidros quebrados com outros materiais recicláveis.\n",
+                      style: TextStyle(
+                        fontSize: 14,
+                        color: CustomColors.highlightTextolor,
+                      ),
+                    ),
+                    Text(
+                      "Eletrônicos:",
+                      style: TextStyle(color: CustomColors.primaryColor),
+                    ),
+                    Text(
+                      "Equipamentos eletrônicos devem ser descartados em locais apropriados, como pontos de coleta ou programas de reciclagem. Isso evita a contaminação por metais pesados e produtos químicos nocivos.\n",
+                      style: TextStyle(
+                        fontSize: 14,
+                        color: CustomColors.highlightTextolor,
+                      ),
+                    ),
+                    Text(
+                      "Produtos Químicos:",
+                      style: TextStyle(color: CustomColors.primaryColor),
+                    ),
+                    Text(
+                      "Pilhas, baterias e produtos químicos domésticos devem ser descartados em locais específicos, como pontos de coleta de materiais perigosos. Nunca descarte produtos químicos em lixo comum.\n",
+                      style: TextStyle(
+                        fontSize: 14,
                         color: CustomColors.highlightTextolor,
                       ),
                     ),
                   ],
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

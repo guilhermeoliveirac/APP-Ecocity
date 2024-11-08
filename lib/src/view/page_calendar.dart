@@ -1,28 +1,38 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, unused_element
 
 import 'package:ecocity/src/ui/theme/custom_colors.dart';
 import 'package:ecocity/src/ui/widgets/custom_appbar.dart';
+import 'package:ecocity/src/ui/widgets/custom_navigationbar.dart';
 import 'package:ecocity/src/view/page_recycling.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:table_calendar/table_calendar.dart';
 
-
 class ScheduleCollectionScreen extends StatefulWidget {
   const ScheduleCollectionScreen({super.key});
 
   @override
-  State<ScheduleCollectionScreen> createState() => _ScheduleCollectionScreenState();
+  State<ScheduleCollectionScreen> createState() =>
+      _ScheduleCollectionScreenState();
 }
 
 class _ScheduleCollectionScreenState extends State<ScheduleCollectionScreen> {
   DateTime _focusedDay = DateTime.now();
   DateTime? _selectedDay;
+  int _selectedIndex = 0;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(),
+      bottomNavigationBar: CustomNavigationBar(
+        currentIndex: _selectedIndex,
+        onTap: (index) {
+          setState(() {
+            _selectedIndex = index;
+          });
+        },
+      ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -31,8 +41,8 @@ class _ScheduleCollectionScreenState extends State<ScheduleCollectionScreen> {
             Text(
               'Agende a sua coleta',
               style: GoogleFonts.poppins(
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
+                fontSize: 16,
+                fontWeight: FontWeight.w600,
                 color: CustomColors.highlightTextolor,
               ),
             ),
@@ -70,45 +80,29 @@ class _ScheduleCollectionScreenState extends State<ScheduleCollectionScreen> {
                 ),
               ),
             const SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: _selectedDay != null ? _confirmSchedule : _showDateError,
-              style: ElevatedButton.styleFrom(
-                backgroundColor: CustomColors.highlightTextolor,
-                padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 15),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20),
+            Center(
+              child: ElevatedButton(
+                onPressed:
+                    _selectedDay != null ? _confirmSchedule : _showDateError,
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: CustomColors.primaryColor,
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 50, vertical: 20),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
                 ),
-              ),
-              child: Text(
-                'Agendar coleta',
-                style: GoogleFonts.poppins(
-                  fontSize: 16,
-                  color: Colors.white,
+                child: Text(
+                  'Agendar coleta',
+                  style: GoogleFonts.poppins(
+                    fontSize: 16,
+                    color: Colors.white,
+                  ),
                 ),
               ),
             ),
           ],
         ),
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.help_outline),
-            label: 'Dúvidas',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Início',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.exit_to_app),
-            label: 'Sair',
-          ),
-        ],
-        selectedItemColor: Colors.white,
-        unselectedItemColor: Colors.white,
-        backgroundColor: CustomColors.highlightTextolor,
-        onTap: (index) => _navigateBottomBar(index),
       ),
     );
   }
@@ -120,7 +114,7 @@ class _ScheduleCollectionScreenState extends State<ScheduleCollectionScreen> {
         return AlertDialog(
           title: Text(
             'Confirmação de Agendamento',
-            style: GoogleFonts.poppins(fontWeight: FontWeight.bold),
+            style: GoogleFonts.poppins(fontWeight: FontWeight.w500),
           ),
           content: Text(
             'Você selecionou o dia ${_selectedDay!.day}/${_selectedDay!.month}/${_selectedDay!.year} para a coleta. Deseja confirmar?',
@@ -131,17 +125,17 @@ class _ScheduleCollectionScreenState extends State<ScheduleCollectionScreen> {
               onPressed: () => Navigator.of(context).pop(),
               child: Text(
                 'Cancelar',
-                style: GoogleFonts.poppins(color: CustomColors.secondaryColor),
+                style: GoogleFonts.poppins(color: CustomColors.primaryColor),
               ),
             ),
             TextButton(
               onPressed: () {
                 Navigator.of(context).pop();
-                _showConfirmationScreen();
+                _showConfirmationPopup();
               },
               child: Text(
                 'Confirmar',
-                style: GoogleFonts.poppins(color: CustomColors.secondaryColor),
+                style: GoogleFonts.poppins(color: CustomColors.primaryColor),
               ),
             ),
           ],
@@ -161,12 +155,32 @@ class _ScheduleCollectionScreenState extends State<ScheduleCollectionScreen> {
     );
   }
 
-  void _showConfirmationScreen() {
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => const ConfirmationScreen(),
-      ),
+  void _showConfirmationPopup() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text(
+            'Sucesso',
+            style: GoogleFonts.poppins(fontWeight: FontWeight.w600),
+          ),
+          content: Text(
+            'Sua coleta foi agendada com sucesso para o dia ${_selectedDay!.day}/${_selectedDay!.month}/${_selectedDay!.year}.',
+            style: GoogleFonts.poppins(),
+          ),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: Text(
+                'Ok',
+                style: GoogleFonts.poppins(color: CustomColors.primaryColor),
+              ),
+            ),
+          ],
+        );
+      },
     );
   }
 
@@ -177,59 +191,5 @@ class _ScheduleCollectionScreenState extends State<ScheduleCollectionScreen> {
         builder: (context) => screens[index],
       ));
     }
-  }
-}
-
-class ConfirmationScreen extends StatelessWidget {
-  const ConfirmationScreen({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: CustomAppBar(),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                'Sua coleta foi agendada com sucesso!',
-                style: GoogleFonts.poppins(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                  color: CustomColors.highlightTextolor,
-                ),
-                textAlign: TextAlign.center,
-              ),
-              const SizedBox(height: 20),
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.of(context).pushReplacement(
-                    MaterialPageRoute(
-                      builder: (context) => const CustomRecycling(),
-                    ),
-                  );
-                },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: CustomColors.highlightTextolor,
-                  padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 15),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                ),
-                child: Text(
-                  'Voltar para o início',
-                  style: GoogleFonts.poppins(
-                    fontSize: 16,
-                    color: Colors.white,
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
   }
 }
