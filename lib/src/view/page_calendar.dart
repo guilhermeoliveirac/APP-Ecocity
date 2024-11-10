@@ -54,7 +54,7 @@ class _ScheduleCollectionScreenState extends State<ScheduleCollectionScreen> {
               'Agende a sua coleta',
               style: GoogleFonts.poppins(
                 fontSize: 16,
-                fontWeight: FontWeight.w600,
+                fontWeight: FontWeight.w500,
                 color: CustomColors.highlightTextolor,
               ),
             ),

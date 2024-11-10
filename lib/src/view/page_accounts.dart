@@ -1,11 +1,10 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, unused_import
 
 import 'package:ecocity/main.dart';
 import 'package:ecocity/src/ui/theme/custom_colors.dart';
 import 'package:ecocity/src/ui/widgets/custom_appbar.dart';
 import 'package:ecocity/src/ui/widgets/custom_buttons.dart';
 import 'package:ecocity/src/ui/widgets/map.dart';
-//import 'package:ecocity/src/view/page_teste_map.dart';
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
