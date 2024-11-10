@@ -3,11 +3,19 @@
 import 'package:ecocity/src/ui/theme/custom_colors.dart';
 import 'package:flutter/material.dart';
 
+import '../../view/notification_page.dart';
+
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
       backgroundColor: CustomColors.primaryColor,
+      leading: IconButton(
+        icon: Icon(Icons.arrow_back, color: Colors.white),
+        onPressed: () {
+          Navigator.pop(context);
+        },
+      ),
       title: Image.asset(
         'assets/images/logo.png',
         height: 40,
@@ -16,7 +24,11 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       actions: [
         IconButton(
           icon: const Icon(Icons.notifications, color: Colors.white),
-          onPressed: () {},
+          onPressed: () {
+            Navigator.of(context).push(
+              MaterialPageRoute(builder: (context) => NotificationPage()),
+            );
+          },
         ),
       ],
     );

@@ -38,7 +38,7 @@ class _CustomRecyclingState extends State<CustomRecycling> {
                 style: GoogleFonts.poppins(
                   color: CustomColors.highlightTextolor,
                   fontSize: 16,
-                  fontWeight: FontWeight.w400,
+                  fontWeight: FontWeight.w500,
                 ),
               ),
               SizedBox(height: 10),

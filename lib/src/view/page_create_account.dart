@@ -23,14 +23,12 @@ class _CustomRegisterState extends State<CustomRegister> {
   final TextEditingController _confirmPasswordController =
       TextEditingController();
 
-  final GoogleSignIn _googleSignIn =
-      GoogleSignIn();
+  final GoogleSignIn _googleSignIn = GoogleSignIn();
 
   Future<void> _handleGoogleSignIn() async {
     try {
       final GoogleSignInAccount? googleUser = await _googleSignIn.signIn();
       if (googleUser != null) {
-
         print("Usuário logado com o Google: ${googleUser.displayName}");
         Navigator.of(context).pushNamed(Routes.home);
       }
@@ -84,7 +82,6 @@ class _CustomRegisterState extends State<CustomRegister> {
               ),
             ),
             SizedBox(height: 40),
-
             Form(
               key: _formKey,
               child: Column(

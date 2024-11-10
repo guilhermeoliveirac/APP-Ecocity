@@ -4,19 +4,14 @@ import 'package:ecocity/src/ui/theme/custom_colors.dart';
 import 'package:ecocity/src/view/page_accounts.dart';
 import 'package:ecocity/src/view/page_certificates.dart';
 import 'package:ecocity/src/view/page_correct_disposal.dart';
-//import 'package:ecocity/src/view/page_correct_disposal.dart';
 import 'package:ecocity/src/view/page_create_account.dart';
 import 'package:ecocity/src/view/page_home.dart';
 import 'package:ecocity/src/view/page_incentiva_program_ecocity.dart';
-//import 'package:ecocity/src/view/page_home.dart';
 import 'package:ecocity/src/view/page_login.dart';
 import 'package:ecocity/src/view/page_recycling.dart';
 import 'package:ecocity/src/view/page_seletive_collection.dart';
-//import 'package:ecocity/src/view/page_schedule_collection.dart';
 import 'package:ecocity/src/view/page_splashscreen.dart';
-//import 'package:ecocity/src/view/page_teste_map.dart';
 import 'package:ecocity/src/view/page_calendar.dart';
-
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -34,8 +29,6 @@ class MyApp extends StatelessWidget {
       title: 'EcoCity',
       theme: ThemeData(
         textTheme: GoogleFonts.poppinsTextTheme(),
-        // ignore: deprecated_member_use
-        //backgroundColor: CustomColors.primaryColor,
       ),
       routes: {
         Routes.splash: (context) => CustomAccounts(),

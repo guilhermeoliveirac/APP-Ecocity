@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors, unused_element
 
+import 'package:ecocity/src/model/storage_helper.dart';
 import 'package:ecocity/src/ui/theme/custom_colors.dart';
 import 'package:ecocity/src/ui/widgets/custom_appbar.dart';
 import 'package:ecocity/src/ui/widgets/custom_navigationbar.dart';
@@ -7,6 +8,7 @@ import 'package:ecocity/src/view/page_recycling.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:table_calendar/table_calendar.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class ScheduleCollectionScreen extends StatefulWidget {
   const ScheduleCollectionScreen({super.key});
@@ -20,6 +22,16 @@ class _ScheduleCollectionScreenState extends State<ScheduleCollectionScreen> {
   DateTime _focusedDay = DateTime.now();
   DateTime? _selectedDay;
   int _selectedIndex = 0;
+  Future<void> _saveScheduledDate(DateTime date) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString(
+        'scheduledDate', '${date.year}-${date.month}-${date.day}');
+  }
+
+  Future<String?> _loadScheduledDate() async {
+    final prefs = await SharedPreferences.getInstance();
+    return prefs.getString('scheduledDate');
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -96,6 +108,7 @@ class _ScheduleCollectionScreenState extends State<ScheduleCollectionScreen> {
                   'Agendar coleta',
                   style: GoogleFonts.poppins(
                     fontSize: 16,
+                    fontWeight: FontWeight.w500,
                     color: Colors.white,
                   ),
                 ),
@@ -108,6 +121,8 @@ class _ScheduleCollectionScreenState extends State<ScheduleCollectionScreen> {
   }
 
   void _confirmSchedule() {
+    if (_selectedDay == null) return;
+
     showDialog(
       context: context,
       builder: (BuildContext context) {
@@ -131,6 +146,7 @@ class _ScheduleCollectionScreenState extends State<ScheduleCollectionScreen> {
             TextButton(
               onPressed: () {
                 Navigator.of(context).pop();
+                saveScheduledDate(_selectedDay!);
                 _showConfirmationPopup();
               },
               child: Text(
@@ -165,7 +181,7 @@ class _ScheduleCollectionScreenState extends State<ScheduleCollectionScreen> {
             style: GoogleFonts.poppins(fontWeight: FontWeight.w600),
           ),
           content: Text(
-            'Sua coleta foi agendada com sucesso para o dia ${_selectedDay!.day}/${_selectedDay!.month}/${_selectedDay!.year}.',
+            'Sua coleta foi agendada com sucesso para o dia ${_selectedDay!.day}/${_selectedDay!.month}/${_selectedDay!.year}. Acesse em notificaçoes e acompanhe seu protocolo.',
             style: GoogleFonts.poppins(),
           ),
           actions: [
