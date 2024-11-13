@@ -1,6 +1,5 @@
-// ignore_for_file: prefer_const_constructors, sort_child_properties_last
-
 import 'package:ecocity/main.dart';
+import 'package:ecocity/src/model/supabase_database.dart';
 import 'package:ecocity/src/ui/theme/custom_colors.dart';
 import 'package:ecocity/src/ui/widgets/custom_appbar.dart';
 import 'package:ecocity/src/ui/widgets/custom_buttons.dart';
@@ -16,7 +15,7 @@ class CustomRegister extends StatefulWidget {
 }
 
 class _CustomRegisterState extends State<CustomRegister> {
-  final _formKey = GlobalKey<FormState>(); // Chave do formulário
+  final _formKey = GlobalKey<FormState>();
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
@@ -34,6 +33,19 @@ class _CustomRegisterState extends State<CustomRegister> {
       }
     } catch (error) {
       print("Erro ao fazer login com o Google: $error");
+    }
+  }
+
+  Future<void> _handleSignUp() async {
+    if (_formKey.currentState!.validate()) {
+      await SupabaseAuth.signUp(
+        context: context,
+        email: _emailController.text,
+        password: _passwordController.text,
+        function: () {
+          Navigator.of(context).pushNamed(Routes.login);
+        },
+      );
     }
   }
 
@@ -170,12 +182,9 @@ class _CustomRegisterState extends State<CustomRegister> {
                   ),
                   SizedBox(height: 12),
                   CustomButton(
-                      onPressed: () {
-                        if (_formKey.currentState!.validate()) {
-                          Navigator.of(context).pushNamed(Routes.login);
-                        }
-                      },
-                      title: "Cadastrar"),
+                    onPressed: _handleSignUp,
+                    title: "Cadastrar",
+                  ),
                   SizedBox(height: 20),
                   TextButton(
                     onPressed: _handleGoogleSignIn,

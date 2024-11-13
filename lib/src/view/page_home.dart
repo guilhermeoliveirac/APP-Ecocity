@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use, prefer_const_constructors
+
 import 'package:ecocity/main.dart';
 import 'package:ecocity/src/ui/theme/custom_colors.dart';
 import 'package:ecocity/src/ui/widgets/custom_appbar.dart';
@@ -40,7 +42,7 @@ class _HomeScreenState extends State<HomeScreen> {
     double cardHeight = 200;
 
     return WillPopScope(
-      onWillPop: () async => false, // Bloqueia a ação de voltar
+      onWillPop: () async => false,
       child: Scaffold(
         appBar: CustomAppBar(),
         bottomNavigationBar: CustomNavigationBar(

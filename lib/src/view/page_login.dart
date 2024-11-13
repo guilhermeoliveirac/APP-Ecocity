@@ -1,11 +1,13 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, unused_import
 
 import 'package:ecocity/main.dart';
+import 'package:ecocity/src/model/supabase_database.dart';
 import 'package:ecocity/src/ui/theme/custom_colors.dart';
 import 'package:ecocity/src/ui/widgets/custom_appbar.dart';
 import 'package:ecocity/src/ui/widgets/custom_buttons.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 class CustomLogin extends StatefulWidget {
   const CustomLogin({super.key});
@@ -112,10 +114,17 @@ class _CustomLoginState extends State<CustomLogin> {
                   ),
                   SizedBox(height: 20),
                   CustomButton(
-                      onPressed: () {
-                        Navigator.of(context).pushNamed(Routes.home);
-                      },
-                      title: "Acessar"),
+                    onPressed: () {
+                      if (_formKey.currentState?.validate() ?? false) {
+                        SupabaseAuth.signIn(
+                          context: context,
+                          email: _emailController.text,
+                          password: _passwordController.text,
+                        );
+                      }
+                    },
+                    title: "Acessar",
+                  ),
                 ],
               ),
             ),

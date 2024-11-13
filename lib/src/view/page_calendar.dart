@@ -60,6 +60,7 @@ class _ScheduleCollectionScreenState extends State<ScheduleCollectionScreen> {
             ),
             const SizedBox(height: 20),
             TableCalendar(
+              locale: "pt_BR",
               firstDay: DateTime.utc(2020, 10, 16),
               lastDay: DateTime.utc(2030, 3, 14),
               focusedDay: _focusedDay,

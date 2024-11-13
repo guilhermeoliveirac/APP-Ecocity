@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, library_private_types_in_public_api
 
 import 'package:ecocity/src/model/storage_helper.dart';
 import 'package:ecocity/src/ui/theme/custom_colors.dart';
@@ -56,25 +56,34 @@ class _NotificationPageState extends State<NotificationPage> {
                 fontWeight: FontWeight.w500,
               ),
             ),
-            const SizedBox(height: 10),
+            const SizedBox(height: 20),
             _scheduledDates != null && _scheduledDates!.isNotEmpty
-                ? ListView.builder(
-                    shrinkWrap: true,
-                    itemCount: _scheduledDates!.length,
-                    itemBuilder: (context, index) {
-                      return ListTile(
-                        title: Text(
-                          'Agendamento: ${_scheduledDates![index]}',
-                          style: TextStyle(
-                              fontSize: 16, color: CustomColors.primaryColor),
-                        ),
-                      );
-                    },
+                ? Expanded(
+                    child: ListView.builder(
+                      itemCount: _scheduledDates!.length,
+                      itemBuilder: (context, index) {
+                        return Container(
+                          margin: const EdgeInsets.only(bottom: 10),
+                          padding: const EdgeInsets.all(12),
+                          decoration: BoxDecoration(
+                            color: CustomColors.cards_information,
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: Text(
+                            'Agendamento marcado para: ${_scheduledDates![index]}',
+                            style: GoogleFonts.poppins(
+                              fontSize: 16,
+                              color: CustomColors.primaryColor,
+                            ),
+                          ),
+                        );
+                      },
+                    ),
                   )
                 : Center(
                     child: Text(
                       'Nenhum agendamento marcado',
-                      style: TextStyle(fontSize: 16),
+                      style: GoogleFonts.poppins(fontSize: 16),
                     ),
                   ),
           ],
